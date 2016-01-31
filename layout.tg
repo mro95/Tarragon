@@ -1,0 +1,15 @@
+#header
+  .top
+  .middle
+    .logo
+  .bottom
+    .border
+
+#content
+    .link
+    .img
+    .just-text
+
+#footer
+    .foo
+    .bar

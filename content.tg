@@ -1,0 +1,20 @@
+#header {
+    type: 'div'
+}
+
+.link {
+    type: 'link',
+    url: 'http://google.nl',
+    text: 'A link to Google'
+}
+
+.img {
+    type: 'image',
+    src: 'https://www.google.nl/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+    alt: 'The Google logo'
+}
+
+.just-text {
+    type: 'span',
+    text: 'this is a span with only text'
+}
