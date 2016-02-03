@@ -4,12 +4,16 @@
     .logo
   .bottom
     .border
+      .border
+        .border
+      .borderaa
 
 #content
-    .link
-    .img
-    .just-text
+  .link
+  .img
+  .just-text
 
 #footer
-    .foo
-    .bar
+  .foo
+  .bar
+

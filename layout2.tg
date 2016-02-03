@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <link href="data.json" type="text/data" />
+</head>
+<body>
+    <div id="container">
+        <p id="kanker"></p>
+    </div>
+
+    <script>
+    var $ = document.querySelector.bind(document);
+    var $$ = document.querySelectorAll.bind(document);
+
+    var elems = $$('link[type="text/data"]');
+    Array.prototype.forEach.call(elems, function(elem) {
+        var data = JSON.parse(elem);
+
+        for (selector in data) {
+           var body = data[selector];
+           $(selector).innerHTML = body;
+        }
+    });
+    </script>
+</body>
+</html>
