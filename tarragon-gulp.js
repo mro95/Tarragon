@@ -1,17 +1,33 @@
 var through = require('through2');
 var gutil = require('gulp-util');
-//var dom = require('node-dom').dom;
+var cheerio = require('cheerio');
 var PluginError = gutil.PluginError;
+var fetch = require('node-fetch');
 
 // Consts
 const PLUGIN_NAME = 'tarragon';
 
 var tarragon = function(contents) {
+    var $ = cheerio.load(contents);
+    var elems = $('link[type="text/data"]');
+    Array.prototype.forEach.call(elems, function(elem) {
+        console.log($(elem).attr('href'));
+        fetch('./'+$(elem).attr('href'))
+        .then(function(response) {
+            return response.json()
+        }).then(function(data) {
+            console.log('parsed json', data);
 
-    console.log(contents);
+            for (selector in data) {
+                var body = data[selector];
+                $(selector).innerHTML = body;
+            }
+        }).catch(function(ex) {
+            console.log('parsing failed', ex)
+        })
+    });
 };
 
-// Plugin level function(dealing with files)
 module.exports = function() {
     console.log('starting tarragon... #debug message');
 
@@ -28,6 +44,5 @@ module.exports = function() {
       }
 
       cb(null, file);
-
     });
 };
