@@ -14,7 +14,6 @@ process.stdin.setEncoding('utf8');
 process.stdin.on('readable', () => {
     var chunk = process.stdin.read();
     if (chunk !== null) {
-        //process.stdout.write(`data: ${chunk}`);
         contents += chunk.toString();
     }
 });
@@ -43,6 +42,15 @@ function parse(contents) {
         }
       });
 
+      var node = document.doctype;
+      var doctype = "<!DOCTYPE "
+               + node.name
+               + (node.publicId ? ' PUBLIC "' + node.publicId + '"' : '')
+               + (!node.publicId && node.systemId ? ' SYSTEM' : '') 
+               + (node.systemId ? ' "' + node.systemId + '"' : '')
+               + '>';
+
+      console.log(doctype);
       console.log(document.documentElement.outerHTML);
     });
 }
