@@ -1,0 +1,19 @@
+tg_header:
+    version: 0.0.1
+    window_title: "Test1"
+    style:
+        - "style.css"
+        - "test1.css"
+    script:
+        - "all.js"
+    content: "data.json"
+
+body:
+    header:
+        h1.title
+    main:
+        section.bg-light
+        section.bg-dark
+        section.bg-light
+    footer:
+        a.contact-me
